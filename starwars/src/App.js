@@ -16,7 +16,7 @@ justify-content: space-around;
 const SearchBarDiv = styled.div`
   
   padding: 2em;
-  margin: 0 auto;
+  margin: 1% 0;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
 
