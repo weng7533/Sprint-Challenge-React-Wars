@@ -13,6 +13,52 @@ flex-wrap: wrap;
 justify-content: space-around;
 
 `
+const SearchBarDiv = styled.div`
+  
+  padding: 2em;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+
+  &:hover {
+    box-shadow: 0 32px 64px 0 rgba(0,0,0,0.2);
+  }
+
+  
+`
+const SearchBarForm = styled.form`
+display: flex;
+flex-wrap: wrap;
+width: 85%;
+margin: 0 auto;
+`
+
+const SearchBarInput = styled.input`
+border: none;
+whitespace: wrap;
+border-radius: 5px 5px 5px 5px;
+background: #E9E9E9;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+padding: 0.35em 0.75em;
+border: none;
+font-size: 1.1em;
+text-decoration: none;
+line-height: normal;
+max-height: 3em;
+
+flex: 2 0 250px;
+
+&:focus {
+  background: Thistle;
+  color: white;
+  letter-spacing: .1em;
+  transition: background 400ms ease-in-out;
+  outline: none;
+}
+
+`
 
 
 const App = () => {
@@ -40,13 +86,21 @@ const App = () => {
       {console.log(list)}
 
 
-      {
+      {/* {
         list.map((vlaue, index) => {
           return <List data={vlaue} key={index} />
         }
 
         )
-      }
+      } */}
+
+
+      <SearchBarDiv>
+        <SearchBarForm>
+          <SearchBarInput type="search" name="search" value={query} onChange={e => setQuery(e.target.value)} />
+
+        </SearchBarForm>
+      </SearchBarDiv>
 
       <CardContainer>
         {

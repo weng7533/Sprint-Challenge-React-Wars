@@ -5,11 +5,14 @@ const CardStyle = styled.div`
 box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   width: 40%;
+  margin: 1% 0;
 
 &:hover {
     box-shadow: 0 32px 64px 0 rgba(0,0,0,0.2);
   }
 `
+
+
 const Container = styled.div`
 padding: 2px 16px;
 margin: 5%;
@@ -25,6 +28,7 @@ const card = (props) => {
             <h5>eye color:  {props.data.eye_color}</h5>
             <h5>gender:     {props.data.gender}</h5>
         </Container>
+
     </CardStyle>
     )
 
