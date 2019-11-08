@@ -7,11 +7,12 @@ box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   width: 40%;
 
 &:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 32px 64px 0 rgba(0,0,0,0.2);
   }
 `
 const Container = styled.div`
 padding: 2px 16px;
+margin: 5%;
 `
 
 const card = (props) => {
@@ -19,10 +20,10 @@ const card = (props) => {
     return (<CardStyle>
 
         <Container>
-            <h4><b>{props.data.name}</b></h4>
-            <h2>birth year: {props.data.birth_year}</h2>
-            <h2>eye color:  {props.data.eye_color}</h2>
-            <h2>gender:     {props.data.gender}</h2>
+            <h3><b>{props.data.name}</b></h3>
+            <h5>birth year: {props.data.birth_year}</h5>
+            <h5>eye color:  {props.data.eye_color}</h5>
+            <h5>gender:     {props.data.gender}</h5>
         </Container>
     </CardStyle>
     )

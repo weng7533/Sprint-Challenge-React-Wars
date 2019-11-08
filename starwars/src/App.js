@@ -6,6 +6,14 @@ import List from './list';
 import Card from './card';
 import styled from 'styled-components'
 
+const CardContainer = styled.div`
+
+display: flex;
+flex-wrap: wrap;
+justify-content: space-around;
+
+`
+
 
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
@@ -40,16 +48,16 @@ const App = () => {
         )
       }
 
+      <CardContainer>
+        {
+          list.map((vlaue, index) => {
+            return <Card data={vlaue} key={index} />
+          }
 
-
-      {
-        list.map((vlaue, index) => {
-          return <Card data={vlaue} key={index} />
+          )
         }
 
-        )
-      }
-
+      </CardContainer>
 
 
 
