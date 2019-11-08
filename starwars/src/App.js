@@ -24,12 +24,38 @@ const SearchBarDiv = styled.div`
     box-shadow: 0 32px 64px 0 rgba(0,0,0,0.2);
   }
 
-  
 `
+
+const ButtonDiv = styled.div`
+  
+  padding: 1em;
+  margin: 1% 0;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  display: flex;
+  justify-content: space-around;
+
+  &:hover {
+    box-shadow: 0 32px 64px 0 rgba(0,0,0,0.2);
+  }
+
+`
+const ButtonWord = styled.h4`
+padding: .5em;
+margin: 1% 0;
+box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+transition: 0.3s;
+
+&:hover {
+  box-shadow: 0 32px 64px 0 rgba(0,0,0,0.2);
+}
+
+`
+
 const SearchBarForm = styled.form`
 display: flex;
-flex-wrap: wrap;
-width: 85%;
+flex-direction: column;
+width: 100%;
 margin: 0 auto;
 `
 
@@ -66,19 +92,25 @@ const App = () => {
   // the state properties here.
   const [list, UpdateList] = useState([]);
   const [query, setQuery] = useState('');
+  const [apiLink, setApiLink] = useState('https://swapi.co/api/people/?search=');
+  const [lastPageLink, setlastPageLink] = useState('');
+  const [nextPageLink, setnextPageLink] = useState('');
   // Fetch characters from the star wars api in an effect hook. Remember, anytime you have a 
   // side effect in a component, you want to think about which state and/or props it should
   // sync up with, if any.
 
   useEffect(() => {
-    Axios.get('https://swapi.co/api/people/?search=' + query)
+
+    Axios.get(apiLink + query)
       .then(res => {
         console.log(res);
         UpdateList(res.data.results);
+        setlastPageLink(res.data.previous);
+        setnextPageLink(res.data.next);
 
       })
 
-  }, [query])
+  }, [apiLink, query])
 
   return (
     <div className="App">
@@ -98,6 +130,10 @@ const App = () => {
       <SearchBarDiv>
         <SearchBarForm>
           <SearchBarInput type="search" name="search" value={query} onChange={e => setQuery(e.target.value)} />
+
+          <ButtonDiv>
+            <ButtonWord onClick={() => setApiLink(lastPageLink)}>Last Page</ButtonWord>  <ButtonWord onClick={() => setApiLink(nextPageLink)} >Next Page</ButtonWord>
+          </ButtonDiv>
 
         </SearchBarForm>
       </SearchBarDiv>
