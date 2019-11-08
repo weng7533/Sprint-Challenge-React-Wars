@@ -103,7 +103,7 @@ const App = () => {
 
     Axios.get(apiLink + query)
       .then(res => {
-        console.log(res);
+        // console.log(res);
         UpdateList(res.data.results);
         setlastPageLink(res.data.previous);
         setnextPageLink(res.data.next);
@@ -115,7 +115,7 @@ const App = () => {
   return (
     <div className="App">
       <h1 className="Header">React Wars</h1>
-      {console.log(list)}
+      {/* {console.log(list)} */}
 
 
       {/* {
